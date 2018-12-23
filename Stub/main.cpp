@@ -77,24 +77,6 @@ bool GetRandomBatchFilePath(char* outputString)
    by 2 KB. I'm not sure if that's a result of the import library (I don't think it is since that was 250 KB),
    or my additional code, but regardless I am disappointed that I wasted three hours on a fruitless effort. */
 
-void MsgBoxLastError()
-{
-	LPSTR lpMsgBuf = NULL;
-	if (FormatMessageA(
-		FORMAT_MESSAGE_ALLOCATE_BUFFER |
-		FORMAT_MESSAGE_FROM_SYSTEM |
-		FORMAT_MESSAGE_IGNORE_INSERTS,
-		NULL,
-		GetLastError(),
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(LPSTR)&lpMsgBuf,
-		0, NULL) != 0)
-	{
-		MessageBoxA(NULL, lpMsgBuf, "Error", MB_OK);
-	}
-	LocalFree(lpMsgBuf);
-}
-
 int main()
 {
 	/* Make sure the random path generator doesn't fail for some reason. */
@@ -159,11 +141,8 @@ int main()
 	//MessageBoxA(NULL, commandLine, "NYX", MB_OK);
 	//BOOL processSpawned = CreateProcessA("cmd.exe", commandLine, NULL, NULL, FALSE, 0, NULL, currentDirectory, &startupInfo, &createProcResult);
 	BOOL processSpawned = CreateProcessA(nullptr, commandLine, NULL, NULL, FALSE, 0, NULL, currentDirectory, &startupInfo, &createProcResult);
-	if (!processSpawned) {
-		MsgBoxLastError();
+	if (!processSpawned)
 		return 11;
-	}
-		//return 11;
 
 	/* Wait for the spawned batch file to exit. */
 	WaitForSingleObject(createProcResult.hProcess, INFINITE);
