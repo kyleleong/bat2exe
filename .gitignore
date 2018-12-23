@@ -30,3 +30,11 @@
 *.exe
 *.out
 *.app
+
+# Ignore build directories
+/Debug/*
+/Release/*
+/bat2exe/Debug/*
+/bat2exe/Release/*
+/Stub/Debug/*
+/Stub/Release/*
