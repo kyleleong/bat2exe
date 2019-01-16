@@ -95,7 +95,7 @@ int ConvertToExecutable(std::string filePath)
 	/* Update the resource of the stub to include the contents of the batch file.*/
 	bool updateSuccess = UpdateResourceA(stubUpdateHandle, RT_RCDATA, MAKEINTRESOURCE(42069), MAKELANGID(LANG_NEUTRAL, SUBLANG_NEUTRAL), bufBatchFile, batchFileSize);
 	if (!updateSuccess) {
-		return GetLastError();
+		return 14;
 	}
 
 	/* Commit the resource update to disk. */
