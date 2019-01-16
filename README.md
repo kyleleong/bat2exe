@@ -15,3 +15,5 @@ The embedded batch file is stored as a plaintext resource, so it is possible to 
 - Use XOR or some other algorithm to ensure that embedded batch file is not visible in plaintext.
 - Support administrator manifest.
 - Support password requirement to launch batch file.
+- Anti-tamper checksum (and other anti-tampering techniques, i don't know what though).
+- Clean up random file name generator (I think it generates the same random name each time).
